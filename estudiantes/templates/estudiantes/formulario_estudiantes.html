@@ -1,0 +1,15 @@
+{% extends "estudiantes/base.html" %}
+
+{% block subtitulo %}Añadir Estudiantes{% endblock subtitulo %}
+
+{% block contenido %}
+{% if es_update %}
+  <form action="{% url 'editar_estudiante' estudiante.id %}" method="post">
+{% else %}
+  <form action="{% url 'crear_estudiante' %}" method="post">
+{% endif %}
+  {% csrf_token %}
+  {{ formulario.as_p }}
+  <input type="submit" value="Enviar" />
+</form>
+{% endblock contenido %}
